@@ -1,0 +1,3 @@
+general notes  
+    customer from start, no connections
+    
