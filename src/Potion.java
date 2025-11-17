@@ -1,0 +1,9 @@
+/**
+ * This class represents a potion in the system. A Potion is defined as
+ * a mix of various ingredients. This class will handle adding together
+ * different ingredients and their interations with customers.
+ */
+
+public class Potion {
+    
+}
