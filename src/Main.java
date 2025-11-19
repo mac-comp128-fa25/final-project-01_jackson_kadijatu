@@ -6,4 +6,9 @@ import java.util.ArrayList;
 
 public class Main {
     public ArrayList<Customer> availableCustomers;
+
+
+
+
+
 }
