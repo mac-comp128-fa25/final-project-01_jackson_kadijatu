@@ -53,6 +53,7 @@ public class Customer {
         return name;
     }
 
+    //getCureStatus
     //getCureRecipe
     //getConnections
     //getIngredient
