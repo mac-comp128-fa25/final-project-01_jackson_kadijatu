@@ -49,6 +49,10 @@ public class Customer {
         return dialogue;
     }
 
+    public String getName(){
+        return name;
+    }
+
     //getCureRecipe
     //getConnections
     //getIngredient
