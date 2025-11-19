@@ -1,0 +1,16 @@
+// create a hashmap implementation for a directed graph
+// that will be used to represent connections between customers.
+
+public class DirectedGraph {
+    private HashMap<String, ArrayList<String>> adjacencyList;
+
+    public DirectedGraph() {
+        this.adjacencyList = new HashMap<>();
+    }
+
+    // Add a directed edge from source to destination
+    public void addEdge(String source, String destination) {}
+
+    // Get the connections for a given customer
+    public ArrayList<String> getConnections(String customer) {}
+}

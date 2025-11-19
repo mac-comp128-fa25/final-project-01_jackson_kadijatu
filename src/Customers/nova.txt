@@ -1,3 +1,13 @@
 General notes:
     ava's twin
     customer from start
+
+
+Cured:  False
+Cure Recipe:    
+Connections:    Ava
+Ingredient:
+numVisits:  0
+neededVisits:   0
+
+Dialogue:
