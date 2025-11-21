@@ -55,7 +55,7 @@ private HashMap<Customer, ArrayList<Customer>> customers;
        Customer F = new Customer("shawn.txt");
 
        //Use the getConnections method once it is made instead of hardcoding the neighbors list
-       //Ex put(A, A.getConnections())
+       
 
        customers.put(A, new ArrayList<Customer>(Arrays.asList(C)));
        customers.put(B, new ArrayList<Customer>(Arrays.asList(E)));
@@ -63,6 +63,15 @@ private HashMap<Customer, ArrayList<Customer>> customers;
        customers.put(D, new ArrayList<Customer>(Arrays.asList(C)));
        customers.put(E, new ArrayList<Customer>());
        customers.put(F, new ArrayList<Customer>());
+
+
+        // customers.put(A, A.getConnections());
+        // customers.put(B, B.getConnections());
+        // customers.put(C, C.getConnections());
+        // customers.put(D, D.getConnections());
+        // customers.put(E, E.getConnections());
+        // customers.put(F, F.getConnections());
+
 
     }
 

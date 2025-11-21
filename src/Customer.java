@@ -55,7 +55,7 @@ public class Customer {
 
     //getCureStatus
     //getCureRecipe
-    //getConnections
+    //getConnections --> this one will need to return an arrayList of customer objects, not just parsing text file
     //getIngredient
     //getNumNeededVisits
 
