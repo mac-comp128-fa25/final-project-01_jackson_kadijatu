@@ -1,20 +1,20 @@
 honey
-    good for cough
+    -good for cough.
 fireroot
-    good for chills
+    -good for chills.
 crowgrass
-    good for mental fog
-    only available after curing ava
+    -good for mental fog
+    -only available after curing ava.
 harrow seed
-    good for toothaches
+    -good for toothaches.
 sweetrose
-    good for coughs
+    -good for coughs.
 sagefern
-    pain reliever
+    -pain reliever.
 nightwood
-    sleep aid
+    -sleep aid.
 milkbush
-    sleep aid
+    -sleep aid.
 amber shard
-    good for chills
+    -good for chills.
 frostsilk
