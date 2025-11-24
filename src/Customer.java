@@ -12,7 +12,7 @@ public class Customer {
     public String name;
     public Boolean cureStatus = false;
     public HashMap<String, Integer> cureRecipe;
-    public ArrayList<String> connections;
+    public ArrayList<Customer> connections;
     public int numVisits = 0;
     public int neededVisits;
     public ArrayList<String> dialogue;
@@ -124,8 +124,8 @@ public class Customer {
 
     //given a text file, find the line that starts with "Connections:"
     // create an arrayList of customer names that are listed after "Connections:"
-    public ArrayList<String> getConnections(String fileName) {
-        ArrayList<String> connections = new ArrayList<String>();
+    public ArrayList<Customer> getConnections(String fileName) {
+        ArrayList<Customer> connections = new ArrayList<Customer>();
 
         try {
             java.io.File file = new java.io.File("src/Customers/" + fileName);
@@ -138,13 +138,15 @@ public class Customer {
                     String[] names = line.substring(12).trim().split(" ");
 
                     for (String name : names) {
-                        connections.add(name);
-                }
+                        Customer c = new Customer(name + ".txt");   
+                        connections.add(c);
+                    
+                    }
             }
             input.close();
         }
 
-        
+
         } catch (java.io.FileNotFoundException e) {
             System.out.println("File not found: " + fileName);
         }

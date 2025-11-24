@@ -27,24 +27,24 @@ public class Main {
 
     // }
 
-    // //given the folder that the customer text files are in
-    // //populate and return an arrayList of all customer objects
-    // public ArrayList<Customer> populateAllCustomers(String folderName) {
-    //     ArrayList<Customer> customers = new ArrayList<Customer>();
+    //given the folder that the customer text files are in
+    //populate and return an arrayList of all customer objects
+    public ArrayList<Customer> populateAllCustomers(String folderName) {
+        ArrayList<Customer> customers = new ArrayList<Customer>();
 
-    //     java.io.File customersFolder = new java.io.File(folderName);
-    //     java.io.File[] listOfCustomers = customersFolder.listFiles();
+        java.io.File customersFolder = new java.io.File(folderName);
+        java.io.File[] listOfCustomers = customersFolder.listFiles();
 
-    //     for (java.io.File file : listOfCustomers) {
-    //         if (file.isFile()) {
-    //             String fileName = file.getName();
-    //             Customer customer = new Customer(fileName);
-    //             customers.add(customer);
-    //         }
-    //     }
+        for (java.io.File file : listOfCustomers) {
+            if (file.isFile()) {
+                String fileName = file.getName();
+                Customer customer = new Customer(fileName);
+                customers.add(customer);
+            }
+        }
 
-    //     return customers;
-    // }
+        return customers;
+    }
 
     // //for each customer in allCustomers
     // //if customer meets criteria to be available at start of game
