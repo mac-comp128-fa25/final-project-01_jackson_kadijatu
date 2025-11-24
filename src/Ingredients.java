@@ -1,17 +1,18 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * This class represents an ingredient used in recipes.
  */
 
-public class Ingredient {
+public class Ingredients {
     
     HashMap<String, ArrayList<String>> Definitions = new HashMap<>();
 
 
     //Precondition of file structure: Last attibute for a given ingredient precedes a period.
-    public Ingredient(String fileName){
+    public Ingredients(String fileName){
 
         String ingredient = "";
         ArrayList<String> attributes = new ArrayList<>();
@@ -40,5 +41,15 @@ public class Ingredient {
 
 
     }
+
+    public Set<String> getNames(){
+        return Definitions.keySet();
+    }
+
+    public ArrayList<String> getAttributes(String ingredient){
+        return Definitions.get(ingredient);
+    }
+
+    
     
 }
