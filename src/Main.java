@@ -29,13 +29,14 @@ public class Main {
 
     //given the folder that the customer text files are in
     //populate and return an arrayList of all customer objects
-    public ArrayList<Customer> populateAllCustomers(String folderName) {
+    public static ArrayList<Customer> populateAllCustomers(String folderName) {
         ArrayList<Customer> customers = new ArrayList<Customer>();
 
         java.io.File customersFolder = new java.io.File(folderName);
         java.io.File[] listOfCustomers = customersFolder.listFiles();
 
         for (java.io.File file : listOfCustomers) {
+            System.out.println(file.getName());
             if (file.isFile()) {
                 String fileName = file.getName();
                 Customer customer = new Customer(fileName);
@@ -88,7 +89,7 @@ public class Main {
     // }
 
     public static void main(String[] args) {
-        
+        populateAllCustomers("src/Customers/");
         
         //game loop
 
