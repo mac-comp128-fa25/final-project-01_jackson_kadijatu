@@ -27,15 +27,7 @@ private HashMap<Customer, ArrayList<Customer>> customerConnections;
     }
 
 
-    //possible amend:
-    // add method takes in customer object
-    // looks for connections in text file
-    // adds connections to arraylist
-    // adds customer and arraylist to customerConnections hashmap
-    // public void addCustomer(Customer customer){
-    //     ArrayList<String> connections = customer.connections;
-    //     customerConnections.put(customer, connections);
-    // }
+    
 
 
     // public ArrayList<String> getConnections(Customer customer){
@@ -65,6 +57,8 @@ private HashMap<Customer, ArrayList<Customer>> customerConnections;
        Customer E = new Customer("nova.txt");
        Customer F = new Customer("shawn.txt");
 
+
+
        //Use the getConnections method once it is made instead of hardcoding the neighbors list
        
 
@@ -76,12 +70,14 @@ private HashMap<Customer, ArrayList<Customer>> customerConnections;
        customerConnections.put(F, new ArrayList<Customer>());
 
 
-        // customers.put(A, A.getConnections());
-        // customers.put(B, B.getConnections());
-        // customers.put(C, C.getConnections());
-        // customers.put(D, D.getConnections());
-        // customers.put(E, E.getConnections());
-        // customers.put(F, F.getConnections());
+        customers.put(A, A.getConnections());
+        customers.put(B, B.getConnections());
+        customers.put(C, C.getConnections());
+        customers.put(D, D.getConnections());
+        customers.put(E, E.getConnections());
+        customerConnections.put(F, F.getConnections());
+
+        customerConnections.put(A, A.connections);
 
 
     }

@@ -153,6 +153,10 @@ public class Customer {
         return connections;
     }
 
+    public ArrayList<String> getConnections(){
+        return connections;
+    }
+
 
     //given a text file, find the line that starts with "Ingredient:"
     // return the ingredient name
