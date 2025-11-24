@@ -46,49 +46,53 @@ public class Main {
         return customers;
     }
 
-    // //for each customer in allCustomers
-    // //if customer meets criteria to be available at start of game
-    // //add to availableCustomers
-    // public void populateAvailableCustomers() {
-    //     for (Customer customer : allCustomers) {
-    //         //criteria to be available at start of game
-    //         if (customer.cureStatus == false && customer.numVisits == customer.neededVisits) {
-    //             availableCustomers.add(customer);
-    //         }
-    //     }
-
-    // }
 
 
-    // //populate the customer graph
-    // //for each customer in allCustomers
-    // // get their connections
-    // // add to customerGraph hashmap
-    // public void setupCustomerGraph() {
-        
-    // }
+    //method to slow down printing to console
+    public static void sleep(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
-    // //method to get game dialogue
-    // //for each line in the given file, add to arraylist of strings
-    // public ArrayList<String> getGameDialogue(String fileName) {
-    //     ArrayList<String> dialogue = new ArrayList<String>();
-    //     try {
-    //         java.io.File file = new java.io.File(fileName);
-    //         java.util.Scanner input = new java.util.Scanner(file);
-    //         while (input.hasNextLine()) {
-    //             String line = input.nextLine();
-    //             dialogue.add(line);
-    //         }
-    //         input.close();
-    //     } catch (java.io.FileNotFoundException e) {
-    //         System.out.println("File not found: " + fileName);
-    //     }
+    public static ArrayList<String> getIntroText(){
+        ArrayList<String> introText = new ArrayList<String>();
+        try {
+            java.io.File file = new java.io.File("src/intro.txt");
+            java.util.Scanner input = new java.util.Scanner(file);
+            while (input.hasNextLine()) {
+                String line = input.nextLine();
+                introText.add(line);
+            }
+            input.close();
+        } catch (java.io.FileNotFoundException e) {
+            System.out.println("File not found: intro.txt");
+        }
 
-    //     return dialogue;
-    // }
+        return introText;
+    }
+
+    public static void runIntro(){
+        ArrayList<String> introText = getIntroText();
+        for(String line : introText){
+            for(char c : line.toCharArray()){
+                System.out.print(c);
+                sleep(75);
+            }
+            System.out.println();
+            sleep(700);
+        }
+    }
+
 
     public static void main(String[] args) {
-        populateAllCustomers("src/Customers/");
+        //open intro text file
+        //for each line in intro text file, print to console one character at a time with small delay
+        // after each line, time.sleep for a longer delay
+        
+        runIntro();
         
         //game loop
 
