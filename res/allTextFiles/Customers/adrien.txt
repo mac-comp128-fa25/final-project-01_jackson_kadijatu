@@ -1,0 +1,11 @@
+General Notes:
+    has been having trouble sleeping, and is really hot at night. doesn't like the taste of milk
+
+Cured:  False
+CureRecipe:    nightwood frostsilk frostsilk
+Connections:    dennis
+Ingredient: 
+numVisits:  0
+neededVisists:  1
+
+Dialogue:

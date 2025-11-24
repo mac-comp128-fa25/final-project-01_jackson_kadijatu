@@ -1,0 +1,4 @@
+To see ingredients, type "INGREDIENTS"
+To see ingredient attributes, type name of ingredient (i.e. "HONEY")
+To add ingredients to your potion, type "ADD" followed by the name of the ingredient (i.e. "ADD HONEY")
+When you are finished with your potion, type "BREW" to finish

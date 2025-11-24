@@ -1,0 +1,13 @@
+general notes  
+    customer from start, no connections
+    
+
+
+Cured:  False
+Cure Recipe:    
+Connections:    Dennis
+Ingredient: crowgrass
+numVisits: 0
+neededVisits: 0
+
+Dialogue:
