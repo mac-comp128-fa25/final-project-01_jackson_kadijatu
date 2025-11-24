@@ -6,6 +6,6 @@ CureRecipe:    nightwood frostsilk frostsilk
 Connections:    dennis
 Ingredient: 
 numVisits:  0
-neededVisists:  1
+neededVisits:  1
 
 Dialogue:

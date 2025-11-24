@@ -9,19 +9,13 @@ import java.io.File;
 public class Main {
     public ArrayList<Customer> allCustomers;
     public ArrayList<Customer> availableCustomers;
-    public ArrayList<String> gameDialogue;
-
-    //initialize list of all customers in game
-    //initialize list of available customers
-    //initialize directed graph for customer connections
+    public ArrayList<String> customerConnections;
 
     //initial setup
     public Main() {
         allCustomers = populateAllCustomers("res/allTextFiles/Customers");
-        //availableCustomers = new ArrayList<Customer>();
-        //populateAvailableCustomers();
-        
-        //gameDialogue = getGameDialogue("GameDialogue.txt");
+        availableCustomers = new ArrayList<Customer>();
+        populateAvailableCustomers();
 
 
     }
@@ -45,69 +39,82 @@ public class Main {
         return customers;
     }
 
-    // // If customer cureStatus is false, and numVisits >= neededVisits, 
-    // // add to availableCustomers
-    // public void populateAvailableCustomers() {
-    //     for (Customer c : allCustomers){
-    //         if (!c.cureStatus && c.numVisits >= c.neededVisits){
-    //             availableCustomers.add(c);
-    //         }
-    //     }
-    // }
+    
+
+    // If customer cureStatus is false, and numVisits >= neededVisits, 
+    // add to availableCustomers
+    public void populateAvailableCustomers() {
+        for (Customer c : allCustomers){
+
+            if (!c.cureStatus && c.numVisits >= c.neededVisits){
+                availableCustomers.add(c);
+            }
+        }
+    }
+
+    //method to get intro text from text file
+    public static ArrayList<String> getIntroText(){
+        ArrayList<String> introText = new ArrayList<String>();
+        try {
+            java.io.File file = new java.io.File("res/allTextFiles/intro.txt");
+            java.util.Scanner input = new java.util.Scanner(file);
+            while (input.hasNextLine()) {
+                String line = input.nextLine();
+                introText.add(line);
+            }
+            input.close();
+        } catch (java.io.FileNotFoundException e) {
+            System.out.println("File not found: intro.txt");
+        }
+
+        return introText;
+    }
+
+    //method to run intro sequence
+    public static void runIntro(){
+        ArrayList<String> introText = getIntroText();
+        for(String line : introText){
+            for(char c : line.toCharArray()){
+                System.out.print(c);
+                sleep(75);
+            }
+            System.out.println();
+            sleep(700);
+        }
+    }
 
 
     //method to slow down printing to console
-    // public static void sleep(int milliseconds) {
-    //     try {
-    //         Thread.sleep(milliseconds);
-    //     } catch (InterruptedException e) {
-    //         Thread.currentThread().interrupt();
-    //     }
-    // }
+    public static void sleep(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
-    // public static ArrayList<String> getIntroText(){
-    //     ArrayList<String> introText = new ArrayList<String>();
-    //     try {
-    //         java.io.File file = new java.io.File("res/allTextFiles/intro.txt");
-    //         java.util.Scanner input = new java.util.Scanner(file);
-    //         while (input.hasNextLine()) {
-    //             String line = input.nextLine();
-    //             introText.add(line);
-    //         }
-    //         input.close();
-    //     } catch (java.io.FileNotFoundException e) {
-    //         System.out.println("File not found: intro.txt");
-    //     }
 
-    //     return introText;
-    // }
+    //helper method to get a random customer from availableCustomers
+    public Customer getRandomCustomer() {
+        int randomIndex = (int) (Math.random() * availableCustomers.size());
+        return availableCustomers.get(randomIndex);
+    }
+    
 
-    // public static void runIntro(){
-    //     ArrayList<String> introText = getIntroText();
-    //     for(String line : introText){
-    //         for(char c : line.toCharArray()){
-    //             System.out.print(c);
-    //             sleep(75);
-    //         }
-    //         System.out.println();
-    //         sleep(700);
-    //     }
-    // }
+    
 
 
     public static void main(String[] args) {
-        //open intro text file
-        //for each line in intro text file, print to console one character at a time with small delay
-        // after each line, time.sleep for a longer delay
+       
         Main game = new Main();
-        System.out.println(game.allCustomers.size());
         //runIntro();
-        //user input to proceed to
-        // java.util.Scanner scanner = new java.util.Scanner(System.in);
-        //     System.out.println("\nPress Enter to continue...");
-        //     scanner.nextLine();
         
-        //System.out.println("Here Comes Your First Customer! Good Luck!");
+        //user input to proceed to
+        java.util.Scanner input = new java.util.Scanner(System.in);
+            System.out.println("\nPress Enter to Continue...");
+            input.nextLine();
+        
+        System.out.println("Here Comes Your First Customer! Good Luck!");
 
         //for customer in availableCustomers, choose random customer
         //display customer dialogue
@@ -119,16 +126,16 @@ public class Main {
         //update customer cure status and available customers based on reaction
         //repeat until available customers is empty
 
-        // while (game.availableCustomers.size() > 0){
-        //     //print a randomcustomer from the list, then remove them from the list
-        //     int randomIndex = (int) (Math.random() * game.availableCustomers.size());
-        //     Customer currentCustomer = game.availableCustomers.get(randomIndex);
-        //     game.availableCustomers.remove(randomIndex);
-        //     System.out.println("\nYour next customer is: " + currentCustomer.name + "!\n");
+        while (game.availableCustomers.size() > 0){
+            //print a randomcustomer from the list, then remove them from the list
+            Customer currentCustomer = game.getRandomCustomer();
+            System.out.println("\n" + currentCustomer.name.toUpperCase() + " enters the shop!\n");
+            
+            
+            game.availableCustomers.remove(currentCustomer);
 
-        // }
+        }
         
-
     }
 
     

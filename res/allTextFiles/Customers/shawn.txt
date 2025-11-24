@@ -4,5 +4,7 @@ Cured:  False
 Cure Recipe:    
 Connections:    
 Ingredient:
+numVisits: 0
+neededVisits: 0
 
 Dialogue:
