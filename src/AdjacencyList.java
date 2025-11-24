@@ -13,6 +13,7 @@ private HashMap<Customer, ArrayList<Customer>> customerConnections;
     public AdjacencyList(int numCustomers){
         this.numCustomers = numCustomers;
         customerConnections = new HashMap<>(numCustomers);
+        
     }
 
     

@@ -9,7 +9,6 @@ import java.lang.Thread;
 public class Main {
     public ArrayList<Customer> allCustomers;
     public ArrayList<Customer> availableCustomers;
-    public HashMap<Customer, ArrayList<Customer>> customerGraph;
     public ArrayList<String> gameDialogue;
 
     //initialize list of all customers in game
@@ -17,15 +16,15 @@ public class Main {
     //initialize directed graph for customer connections
 
     //initial setup
-    // public Main() {
-    //     allCustomers = populateAllCustomers("src/Customers/");
-    //     availableCustomers = new ArrayList<Customer>();
-    //     populateAvailableCustomers();
-    //     customerGraph = new HashMap<>();
-    //     gameDialogue = getGameDialogue("GameDialogue.txt");
+    public Main() {
+        allCustomers = populateAllCustomers("src/Customers/");
+        availableCustomers = new ArrayList<Customer>();
+        //populateAvailableCustomers();
+        
+        //gameDialogue = getGameDialogue("GameDialogue.txt");
 
 
-    // }
+    }
 
     //given the folder that the customer text files are in
     //populate and return an arrayList of all customer objects
@@ -104,7 +103,7 @@ public class Main {
     // what quantities. Be careful, cause if you get it wrong,you could hurt them!
     // If you ever need to know what ingredients you have, type "Ingredients" into
     // the console. To see what each ingredient does, type the nameof the ingredient.
-    //To make a recipe, type "Make" followed by the ingredient names.
+    //To make a recipe, type "add" followed by the ingredient names.
 
     //after initial text, first line of customer dialogue is displayed
     //player is prompted to enter a command

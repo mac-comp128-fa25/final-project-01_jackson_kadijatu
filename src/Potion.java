@@ -5,5 +5,7 @@
  */
 
 public class Potion {
-    
+    //initialize empty hashmap
+    //add method - 
+    //compare method - compare potion (ingredients player adds to potion) to cure recipe
 }
