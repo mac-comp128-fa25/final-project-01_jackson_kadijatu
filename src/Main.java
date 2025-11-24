@@ -29,7 +29,7 @@ public class Main {
 
     //given the folder that the customer text files are in
     //populate and return an arrayList of all customer objects
-    public ArrayList<Customer> populateAllCustomers(String folderName) {
+    public static ArrayList<Customer> populateAllCustomers(String folderName) {
         ArrayList<Customer> customers = new ArrayList<Customer>();
 
         java.io.File customersFolder = new java.io.File(folderName);

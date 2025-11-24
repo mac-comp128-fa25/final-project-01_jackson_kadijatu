@@ -50,34 +50,37 @@ private HashMap<Customer, ArrayList<Customer>> customerConnections;
 
 
     public void initialSetup(){
-       Customer A = new Customer("adrien.txt");
-       Customer B = new Customer("ava.txt");
-       Customer C = new Customer("Dennis.txt");
-       Customer D = new Customer("holly.txt");
-       Customer E = new Customer("nova.txt");
-       Customer F = new Customer("shawn.txt");
+    //    Customer A = new Customer("adrien.txt");
+    //    Customer B = new Customer("ava.txt");
+    //    Customer C = new Customer("Dennis.txt");
+    //    Customer D = new Customer("holly.txt");
+    //    Customer E = new Customer("nova.txt");
+    //    Customer F = new Customer("shawn.txt");
+
+
+       ArrayList<Customer> customers = Main.populateAllCustomers("src/Customers");
+
+       for(Customer c : customers){
+        customerConnections.put(c, c.connections);
+       }
+
+       //java file interation instead of hardcode
 
 
 
        //Use the getConnections method once it is made instead of hardcoding the neighbors list
+
+
+
+        //change to a loop when change file so this isnt hard coded
+
+        // customerConnections.put(A, A.connections);
+        // customerConnections.put(B, B.connections);
+        // customerConnections.put(C, C.connections);
+        // customerConnections.put(D, D.connections);
+        // customerConnections.put(E, E.connections);
+        // customerConnections.put(F, F.connections);
        
-
-       customerConnections.put(A, new ArrayList<Customer>(Arrays.asList(C)));
-       customerConnections.put(B, new ArrayList<Customer>(Arrays.asList(E)));
-       customerConnections.put(C, new ArrayList<Customer>(Arrays.asList(A, B)));
-       customerConnections.put(D, new ArrayList<Customer>(Arrays.asList(C)));
-       customerConnections.put(E, new ArrayList<Customer>());
-       customerConnections.put(F, new ArrayList<Customer>());
-
-
-        customers.put(A, A.getConnections());
-        customers.put(B, B.getConnections());
-        customers.put(C, C.getConnections());
-        customers.put(D, D.getConnections());
-        customers.put(E, E.getConnections());
-        customerConnections.put(F, F.getConnections());
-
-        customerConnections.put(A, A.connections);
 
 
     }
