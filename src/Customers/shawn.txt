@@ -1,8 +1,0 @@
-Customer from start, no connections
-
-Cured:  False
-Cure Recipe:    
-Connections:    
-Ingredient:
-
-Dialogue:

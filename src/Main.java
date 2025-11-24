@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.lang.Thread;
+import java.io.File;
 
 /**
  * This is the main class for the game
@@ -17,8 +17,8 @@ public class Main {
 
     //initial setup
     public Main() {
-        allCustomers = populateAllCustomers("src/Customers/");
-        availableCustomers = new ArrayList<Customer>();
+        allCustomers = populateAllCustomers("res/allTextFiles/Customers");
+        //availableCustomers = new ArrayList<Customer>();
         //populateAvailableCustomers();
         
         //gameDialogue = getGameDialogue("GameDialogue.txt");
@@ -31,11 +31,10 @@ public class Main {
     public static ArrayList<Customer> populateAllCustomers(String folderName) {
         ArrayList<Customer> customers = new ArrayList<Customer>();
 
-        java.io.File customersFolder = new java.io.File(folderName);
-        java.io.File[] listOfCustomers = customersFolder.listFiles();
+        File customersFolder = new File(folderName);
+        File[] listOfCustomers = customersFolder.listFiles();
 
-        for (java.io.File file : listOfCustomers) {
-            System.out.println(file.getName());
+        for (File file : listOfCustomers) {
             if (file.isFile()) {
                 String fileName = file.getName();
                 Customer customer = new Customer(fileName);
@@ -46,68 +45,93 @@ public class Main {
         return customers;
     }
 
+    // // If customer cureStatus is false, and numVisits >= neededVisits, 
+    // // add to availableCustomers
+    // public void populateAvailableCustomers() {
+    //     for (Customer c : allCustomers){
+    //         if (!c.cureStatus && c.numVisits >= c.neededVisits){
+    //             availableCustomers.add(c);
+    //         }
+    //     }
+    // }
 
 
     //method to slow down printing to console
-    public static void sleep(int milliseconds) {
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
+    // public static void sleep(int milliseconds) {
+    //     try {
+    //         Thread.sleep(milliseconds);
+    //     } catch (InterruptedException e) {
+    //         Thread.currentThread().interrupt();
+    //     }
+    // }
 
-    public static ArrayList<String> getIntroText(){
-        ArrayList<String> introText = new ArrayList<String>();
-        try {
-            java.io.File file = new java.io.File("src/intro.txt");
-            java.util.Scanner input = new java.util.Scanner(file);
-            while (input.hasNextLine()) {
-                String line = input.nextLine();
-                introText.add(line);
-            }
-            input.close();
-        } catch (java.io.FileNotFoundException e) {
-            System.out.println("File not found: intro.txt");
-        }
+    // public static ArrayList<String> getIntroText(){
+    //     ArrayList<String> introText = new ArrayList<String>();
+    //     try {
+    //         java.io.File file = new java.io.File("res/allTextFiles/intro.txt");
+    //         java.util.Scanner input = new java.util.Scanner(file);
+    //         while (input.hasNextLine()) {
+    //             String line = input.nextLine();
+    //             introText.add(line);
+    //         }
+    //         input.close();
+    //     } catch (java.io.FileNotFoundException e) {
+    //         System.out.println("File not found: intro.txt");
+    //     }
 
-        return introText;
-    }
+    //     return introText;
+    // }
 
-    public static void runIntro(){
-        ArrayList<String> introText = getIntroText();
-        for(String line : introText){
-            for(char c : line.toCharArray()){
-                System.out.print(c);
-                sleep(75);
-            }
-            System.out.println();
-            sleep(700);
-        }
-    }
+    // public static void runIntro(){
+    //     ArrayList<String> introText = getIntroText();
+    //     for(String line : introText){
+    //         for(char c : line.toCharArray()){
+    //             System.out.print(c);
+    //             sleep(75);
+    //         }
+    //         System.out.println();
+    //         sleep(700);
+    //     }
+    // }
 
 
     public static void main(String[] args) {
         //open intro text file
         //for each line in intro text file, print to console one character at a time with small delay
         // after each line, time.sleep for a longer delay
+        Main game = new Main();
+        System.out.println(game.allCustomers.size());
+        //runIntro();
+        //user input to proceed to
+        // java.util.Scanner scanner = new java.util.Scanner(System.in);
+        //     System.out.println("\nPress Enter to continue...");
+        //     scanner.nextLine();
         
-        runIntro();
+        //System.out.println("Here Comes Your First Customer! Good Luck!");
+
+        //for customer in availableCustomers, choose random customer
+        //display customer dialogue
+        //give user options for input
+        //process user input
+        //update potion based on user input or display appropriate information
+        //once user inputs "brew", compare potion to cure recipe
+        //display appropriate reaction based on comparison
+        //update customer cure status and available customers based on reaction
+        //repeat until available customers is empty
+
+        // while (game.availableCustomers.size() > 0){
+        //     //print a randomcustomer from the list, then remove them from the list
+        //     int randomIndex = (int) (Math.random() * game.availableCustomers.size());
+        //     Customer currentCustomer = game.availableCustomers.get(randomIndex);
+        //     game.availableCustomers.remove(randomIndex);
+        //     System.out.println("\nYour next customer is: " + currentCustomer.name + "!\n");
+
+        // }
         
-        //game loop
 
     }
 
-    //initial game text, gives introduction to rules, objectives, and controls
-    // ie. "Welcome to your Apothecary! Your goal is to cure as many customers 
-    // as possible by creating the right recipes for their ailments. You don't
-    // have to cure them all, but the more you cure, the better your score!
-    // When a customer comes in, pay attention to what they say - How they describe
-    // their symptoms will help you figure out what ingredients you need to use,and in
-    // what quantities. Be careful, cause if you get it wrong,you could hurt them!
-    // If you ever need to know what ingredients you have, type "Ingredients" into
-    // the console. To see what each ingredient does, type the nameof the ingredient.
-    //To make a recipe, type "add" followed by the ingredient names.
+    
 
     //after initial text, first line of customer dialogue is displayed
     //player is prompted to enter a command
