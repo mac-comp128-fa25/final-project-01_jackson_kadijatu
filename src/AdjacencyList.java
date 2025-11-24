@@ -5,45 +5,56 @@ import java.util.HashMap;
 
 public class AdjacencyList {
 
-private int numCustomers;
-private HashMap<Customer, ArrayList<Customer>> customers;
+private int numCustomers;  // do we need this, since hashmap is a dynamic data structure?
+private HashMap<Customer, ArrayList<Customer>> customerConnections;
 
 
 
     public AdjacencyList(int numCustomers){
         this.numCustomers = numCustomers;
-        customers = new HashMap<>(numCustomers);
+        customerConnections = new HashMap<>(numCustomers);
     }
 
-
+    
     public void add(Customer customer, ArrayList<Customer> listCustomer){
-        customers.put(customer, listCustomer);
+        customerConnections.put(customer, listCustomer);
     }
 
     public void add(Customer customer, Customer connection){
         ArrayList<Customer> temp = new ArrayList<>();
         temp.add(connection);
-        customers.put(customer, temp);
+        customerConnections.put(customer, temp);
     }
 
 
-    public ArrayList<String> getConnections(Customer customer){
-        ArrayList<String> temp = new ArrayList<>();
-        ArrayList<Customer> target = customers.get(customer);
+    //possible amend:
+    // add method takes in customer object
+    // looks for connections in text file
+    // adds connections to arraylist
+    // adds customer and arraylist to customerConnections hashmap
+    // public void addCustomer(Customer customer){
+    //     ArrayList<String> connections = customer.connections;
+    //     customerConnections.put(customer, connections);
+    // }
 
-        if(target != null){
 
-            for(Customer c: target){
-                temp.add(c.getName());
-            }
+    // public ArrayList<String> getConnections(Customer customer){
+    //     ArrayList<String> temp = new ArrayList<>();
+    //     ArrayList<Customer> target = customers.get(customer);
+
+    //     if(target != null){
+
+    //         for(Customer c: target){
+    //             temp.add(c.getName());
+    //         }
             
-            return temp;
-        }
-        else{
-            return null;
-        }
+    //         return temp;
+    //     }
+    //     else{
+    //         return null;
+    //     }
         
-    }
+    // }
 
 
     public void initialSetup(){
@@ -57,12 +68,12 @@ private HashMap<Customer, ArrayList<Customer>> customers;
        //Use the getConnections method once it is made instead of hardcoding the neighbors list
        
 
-       customers.put(A, new ArrayList<Customer>(Arrays.asList(C)));
-       customers.put(B, new ArrayList<Customer>(Arrays.asList(E)));
-       customers.put(C, new ArrayList<Customer>(Arrays.asList(A, B)));
-       customers.put(D, new ArrayList<Customer>(Arrays.asList(C)));
-       customers.put(E, new ArrayList<Customer>());
-       customers.put(F, new ArrayList<Customer>());
+       customerConnections.put(A, new ArrayList<Customer>(Arrays.asList(C)));
+       customerConnections.put(B, new ArrayList<Customer>(Arrays.asList(E)));
+       customerConnections.put(C, new ArrayList<Customer>(Arrays.asList(A, B)));
+       customerConnections.put(D, new ArrayList<Customer>(Arrays.asList(C)));
+       customerConnections.put(E, new ArrayList<Customer>());
+       customerConnections.put(F, new ArrayList<Customer>());
 
 
         // customers.put(A, A.getConnections());

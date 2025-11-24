@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.lang.Thread;
 
 /**
@@ -8,10 +9,90 @@ import java.lang.Thread;
 public class Main {
     public ArrayList<Customer> allCustomers;
     public ArrayList<Customer> availableCustomers;
+    public HashMap<Customer, ArrayList<Customer>> customerGraph;
+    public ArrayList<String> gameDialogue;
 
     //initialize list of all customers in game
     //initialize list of available customers
     //initialize directed graph for customer connections
+
+    //initial setup
+    // public Main() {
+    //     allCustomers = populateAllCustomers("src/Customers/");
+    //     availableCustomers = new ArrayList<Customer>();
+    //     populateAvailableCustomers();
+    //     customerGraph = new HashMap<>();
+    //     gameDialogue = getGameDialogue("GameDialogue.txt");
+
+
+    // }
+
+    // //given the folder that the customer text files are in
+    // //populate and return an arrayList of all customer objects
+    // public ArrayList<Customer> populateAllCustomers(String folderName) {
+    //     ArrayList<Customer> customers = new ArrayList<Customer>();
+
+    //     java.io.File customersFolder = new java.io.File(folderName);
+    //     java.io.File[] listOfCustomers = customersFolder.listFiles();
+
+    //     for (java.io.File file : listOfCustomers) {
+    //         if (file.isFile()) {
+    //             String fileName = file.getName();
+    //             Customer customer = new Customer(fileName);
+    //             customers.add(customer);
+    //         }
+    //     }
+
+    //     return customers;
+    // }
+
+    // //for each customer in allCustomers
+    // //if customer meets criteria to be available at start of game
+    // //add to availableCustomers
+    // public void populateAvailableCustomers() {
+    //     for (Customer customer : allCustomers) {
+    //         //criteria to be available at start of game
+    //         if (customer.cureStatus == false && customer.numVisits == customer.neededVisits) {
+    //             availableCustomers.add(customer);
+    //         }
+    //     }
+
+    // }
+
+
+    // //populate the customer graph
+    // //for each customer in allCustomers
+    // // get their connections
+    // // add to customerGraph hashmap
+    // public void setupCustomerGraph() {
+        
+    // }
+
+    // //method to get game dialogue
+    // //for each line in the given file, add to arraylist of strings
+    // public ArrayList<String> getGameDialogue(String fileName) {
+    //     ArrayList<String> dialogue = new ArrayList<String>();
+    //     try {
+    //         java.io.File file = new java.io.File(fileName);
+    //         java.util.Scanner input = new java.util.Scanner(file);
+    //         while (input.hasNextLine()) {
+    //             String line = input.nextLine();
+    //             dialogue.add(line);
+    //         }
+    //         input.close();
+    //     } catch (java.io.FileNotFoundException e) {
+    //         System.out.println("File not found: " + fileName);
+    //     }
+
+    //     return dialogue;
+    // }
+
+    public static void main(String[] args) {
+        
+        
+        //game loop
+
+    }
 
     //initial game text, gives introduction to rules, objectives, and controls
     // ie. "Welcome to your Apothecary! Your goal is to cure as many customers 
@@ -35,6 +116,7 @@ public class Main {
     //if numVisits for customer reaches neededVisits, add to availableCustomers
 
     //loop through until the size of availableCustomers is 0
+
 
 
 
