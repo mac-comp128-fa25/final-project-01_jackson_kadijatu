@@ -7,6 +7,8 @@
  */
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.io.File;
+import java.util.Scanner;
 
 public class Customer {
     public String name;
@@ -21,8 +23,9 @@ public class Customer {
         this.name = getCustomerName(fileName);
         this.cureStatus = getCureStatus(fileName);
         this.cureRecipe = getCureRecipe(fileName);  
-        this.connections = getConnections(fileName);
+        //this.connections = getConnections(fileName);
         this.dialogue = getDialogue(fileName);
+        this.neededVisits = getNumNeededVisits(fileName);
     }
 
     //method for parsing dialogue from text file
@@ -31,8 +34,8 @@ public class Customer {
         
         ArrayList<String> dialogue = new ArrayList<String>();
         try {
-            java.io.File file = new java.io.File("src/Customers/" + fileName);
-            java.util.Scanner input = new java.util.Scanner(file);
+            File file = new File("res/allTextFiles/Customers/" + fileName);
+            Scanner input = new Scanner(file);
             boolean isDialogueLine = false;
             while (input.hasNextLine()) {
                 String line = input.nextLine();
@@ -61,8 +64,8 @@ public class Customer {
     //given a text file, find the line that starts with "Cured:" and return true or false
     public static Boolean getCureStatus(String fileName) {
         try {
-            java.io.File file = new java.io.File("src/Customers/" + fileName);
-            java.util.Scanner input = new java.util.Scanner(file);
+            File file = new File("res/allTextFiles/Customers/" + fileName);
+            Scanner input = new Scanner(file);
 
             while (input.hasNextLine()) {
                 String line = input.nextLine();
@@ -89,7 +92,7 @@ public class Customer {
         HashMap<String, Integer> recipe = new HashMap<String, Integer>();
 
         try {
-            java.io.File file = new java.io.File("src/Customers/" + fileName);
+            java.io.File file = new java.io.File("res/allTextFiles/Customers/" + fileName);
             java.util.Scanner input = new java.util.Scanner(file);
 
             while (input.hasNextLine()) {
@@ -124,41 +127,14 @@ public class Customer {
 
     //given a text file, find the line that starts with "Connections:"
     // create an arrayList of customer names that are listed after "Connections:"
-    public ArrayList<Customer> getConnections(String fileName) {
-        ArrayList<Customer> connections = new ArrayList<Customer>();
-
-        try {
-            java.io.File file = new java.io.File("src/Customers/" + fileName);
-            java.util.Scanner input = new java.util.Scanner(file);
-
-            while (input.hasNextLine()) {
-                String line = input.nextLine();
-
-                if (line.startsWith("Connections:")) {
-                    String[] names = line.substring(12).trim().split(" ");
-
-                    for (String name : names) {
-                        Customer c = new Customer(name + ".txt");   
-                        connections.add(c);
-                    
-                    }
-            }
-            input.close();
-        }
-
-
-        } catch (java.io.FileNotFoundException e) {
-            System.out.println("File not found: " + fileName);
-        }
-        return connections;
-    }
+    
 
 
     //given a text file, find the line that starts with "Ingredient:"
     // return the ingredient name
     public static String getIngredient(String fileName) {
         try {
-            java.io.File file = new java.io.File("src/Customers/" + fileName);
+            java.io.File file = new java.io.File("res/allTextFiles/Customers/" + fileName);
             java.util.Scanner input = new java.util.Scanner(file);
 
             while (input.hasNextLine()) {
@@ -183,16 +159,16 @@ public class Customer {
     // return the integer value following "numVisits:" 
     public static int getNumNeededVisits(String fileName) {
         try {
-            java.io.File file = new java.io.File("src/Customers/" + fileName);
+            java.io.File file = new java.io.File("res/allTextFiles/Customers/" + fileName);
             java.util.Scanner input = new java.util.Scanner(file);
 
             while (input.hasNextLine()) {
                 String line = input.nextLine();
 
-                if (line.startsWith("numVisits:")) {
-                    String numVisitsStr = line.substring(10).trim();
+                if (line.startsWith("neededVisits:")) {
+                    String numNeededVisitsStr = line.substring(13).trim();
                     input.close();
-                    return Integer.parseInt(numVisitsStr);
+                    return Integer.parseInt(numNeededVisitsStr);
                 }
             }
             input.close();

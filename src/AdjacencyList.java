@@ -1,18 +1,15 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 
 public class AdjacencyList {
 
-private int numCustomers;  // do we need this, since hashmap is a dynamic data structure?
 private HashMap<Customer, ArrayList<Customer>> customerConnections;
 
 
 
-    public AdjacencyList(int numCustomers){
-        this.numCustomers = numCustomers;
-        customerConnections = new HashMap<>(numCustomers);
+    public AdjacencyList(){
+        customerConnections = new HashMap<>();
         
     }
 
@@ -51,8 +48,8 @@ private HashMap<Customer, ArrayList<Customer>> customerConnections;
 
 
     public void initialSetup(){
-
-       ArrayList<Customer> customers = Main.populateAllCustomers("src/Customers");
+        Main main = new Main();
+        ArrayList<Customer> customers = main.allCustomers;
 
        for(Customer c : customers){
         customerConnections.put(c, c.connections);
