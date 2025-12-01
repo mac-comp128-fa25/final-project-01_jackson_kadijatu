@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * This class represents a potion in the system. A Potion is defined as
  * a mix of various ingredients. This class will handle adding together
@@ -5,15 +7,26 @@
  */
 
 public class Potion {
-    //initialize empty hashmap
-    //add method - 
-    //compare method - compare potion (ingredients player adds to potion) to cure recipe
+    HashMap<String,Integer> potionIng = new HashMap<>();
 
 
+    public void add(String Ingredient){
+        if(potionIng.keySet().contains(Ingredient)){
+            int temp = potionIng.get(Ingredient);
+            potionIng.put(Ingredient, temp+1);
+        }
+        else{
+            potionIng.put(Ingredient, 1);
+        }
+    }
 
-
-    // They type Add + ingridient 
-    // Another for finished that compares our poition to a customers cure recipie
-
+    public boolean compare(Customer customer){
+        if(customer.getCureRecipe().equals(potionIng)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
 }
