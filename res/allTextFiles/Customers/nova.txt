@@ -4,10 +4,14 @@ General notes:
 
 
 Cured:  False
-Cure Recipe:    
+Cure Recipe:    sagefern sagefern sagefern
 Connections:    Ava
 Ingredient:
 numVisits:  0
 neededVisits:   0
 
 Dialogue:
+Hello, hello! I heard through the grapevine that we have a new apothecary! It's nice to see a new face in the neighborhood. And with perfect timing, too. I strained myself something fierce the other day and I've been mighty sore ever since. You got something that can help? Oh, where are my manners, I'm Nova!
+Oh that feels SO much better! I feel like I can get right back to work! Say, you did such a good job with me, I think I'll send my sis you're way. She's stubborn about getting help.
+Ah, dang. That didn't seem to do much. Guess I'm stuck healing the old fashioned way, huh?
+harmed: 

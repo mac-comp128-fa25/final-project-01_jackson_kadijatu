@@ -1,5 +1,5 @@
 honey
-    -good for cough.
+    -good for cough, sore throat.
 fireroot
     -good for chills.
 crowgrass
@@ -18,3 +18,4 @@ milkbush
 amber shard
     -good for chills.
 frostsilk
+    -good for cooling the body down.

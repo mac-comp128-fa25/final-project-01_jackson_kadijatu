@@ -6,10 +6,14 @@ general notes:
 
 
 Cured:  False
-Cure Recipe:    crowgrass, crowgrass, fireroot, sagefern
+Cure Recipe:    crowgrass, crowgrass, crowgrass, fireroot, sagefern
 Connections:
 Ingredient: 
 numVisits: 0
 neededVisits: 2
 
 Dialogue:
+Where... is this- this is that new apothecary, right? Good, I'd gotten lost so many times I thought I'd wandered outta town. Two- two? Of my friends got themselves cured here. pointed me in your direction. I've uh... been blanking out real bad lately. It's like my minds in a haze, I can hardly even tell what day it is. Doesn't help that I've been stuck in bed all cold and sore too tried using some amber shard to help but that stuff burns to touch. Those aren't near as bad as the fog, though.
+Woah, my head feel so much clearer! I can actually think straight! I may even be able to hang out with my friends again. I can't thank you enough!
+This is kinda tasty... Why am I here again? Oh. Guess it didn't work then. Welp, back to the drawing board.
+OW! That burns bad! It's like fire going right down my throat, it hurts! *He runs out of the store before he can say anything else.*

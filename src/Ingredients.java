@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -9,6 +10,7 @@ import java.util.Set;
 public class Ingredients {
     
     HashMap<String, ArrayList<String>> Definitions = new HashMap<>();
+    ArrayList<String> availableIngredients;
 
 
     //Precondition of file structure: Last attibute for a given ingredient precedes a period.
@@ -17,7 +19,7 @@ public class Ingredients {
         String ingredient = "";
         ArrayList<String> attributes = new ArrayList<>();
         try {
-            java.io.File file = new java.io.File("src/ingredients/" + fileName);
+            java.io.File file = new java.io.File("res/allTextFiles/" + fileName);
             java.util.Scanner input = new java.util.Scanner(file);
             while (input.hasNextLine()) {
                 String line = input.nextLine();

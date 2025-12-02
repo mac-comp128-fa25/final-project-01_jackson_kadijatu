@@ -1,10 +1,14 @@
 Customer from start, no connections
 
 Cured:  False
-Cure Recipe:    
+Cure Recipe:    honey honey honey milkbush
 Connections:    
 Ingredient:
+Aversions: 
 numVisits: 0
 neededVisits: 0
 
 Dialogue:
+Hey, this is that new apothecary that just opened up, right? Lucky break! Names Shawn. I've had a pretty severe cough the last few nights, bad enough that it keeps me from sleeping at night. You got anything that'll calm it down? It'd be much appreciated.
+Thanks a bunch! I can already feel my lungs calming down.
+Yeah, I don't think that's doing anything. Thanks anyways for tryin.

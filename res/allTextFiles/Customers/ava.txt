@@ -9,7 +9,12 @@ Cured:  False
 Cure Recipe:    
 Connections:    Adrien Dennis
 Ingredient: crowgrass
+Aversions: fireroot
 numVisits: 0
 neededVisits: 1
 
 Dialogue:
+So this is the apothecary everyone's been raving about, huh? I'm Ava, my sister told me to come here after you cured her. I've had a sore throat and some pretty nasty chills lately. Think you can do something about that? Oh, and don't give me anything with fireroot in it, the stuff makes me break out in hives!
+Huh. Not bad. I'm actually starting to feel better... Here. This is crowgrass. I run a garden store near here and figured it'd be good compensation. It's great for clearing mental fog. I'll send some of my friends your way, too.
+Should've figured you wouldn't be able to do anything. I'll make sure my sister knows it was a bust, maybe she'll stop recommending places like this to me.
+Ack! Is there fireroot in this?! Ugh, I can already feel my skin itching! This was such a mistake!

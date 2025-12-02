@@ -6,8 +6,11 @@ general notes
 Cured:  False
 Cure Recipe:    
 Connections:    Dennis
-Ingredient: crowgrass
+Ingredient:
 numVisits: 0
 neededVisits: 0
 
 Dialogue:
+H-hello? Oh, Hi! I'm Holly, I work at the bakery a few doors down. We've been experimenting lately, trying to come up with new goods, and I think I've been sampling a bit too much. I've got a bit of a toothache that won't go away. Figured I'd get something for it before it got too bad, y'know?
+This is perfect, thank you! Feel free to stop by the bakery for a treat sometime, it'll be on the house.
+Hmm... Nope, still hurts. No, it's alright. I'll just have to be more careful with my sampling. The last thing I'd want is to have to see a dentist.

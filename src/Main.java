@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.lang.Thread;
+import java.lang.reflect.Array;
 import java.io.File;
 
 /**
@@ -10,12 +11,24 @@ public class Main {
     public ArrayList<Customer> allCustomers;
     public ArrayList<Customer> availableCustomers;
     public ArrayList<String> customerConnections;
+    public ArrayList<String> availableIngredients;
 
     //initial setup
     public Main() {
         allCustomers = populateAllCustomers("res/allTextFiles/Customers");
         availableCustomers = new ArrayList<Customer>();
         populateAvailableCustomers();
+        availableIngredients = new ArrayList<String>();
+        //populate availableIngredients from Ingredients class with ingredients available at the start of the game (everything except crowgroass)
+        Ingredients ingredients = new Ingredients("ingredients.txt");
+        for (String ingredientName : ingredients.getNames()){
+            if (!ingredientName.toLowerCase().equals("crowgroass")){
+                availableIngredients.add(ingredientName.toLowerCase());
+            }
+
+        }
+        
+        
 
 
     }
@@ -126,33 +139,105 @@ public class Main {
         //update customer cure status and available customers based on reaction
         //repeat until available customers is empty
 
+        
+        
+
         while (game.availableCustomers.size() > 0){
             //print a randomcustomer from the list, then remove them from the list
             Customer currentCustomer = game.getRandomCustomer();
+            ArrayList<String> dialogue = currentCustomer.dialogue;
             System.out.println("\n" + currentCustomer.name.toUpperCase() + " enters the shop!\n");
-            
+            sleep(50);
+
+            //slowly print the first line in dialogue
+            // for(char c : dialogue.get(0).toCharArray()){
+            //     System.out.print(c);
+            //     sleep(75);
+            // }
+
+            //prompt user to enter command
+            System.out.println("\n\nEnter a command (type 'help' if you're not sure what to do):");
+            String userCommand = input.nextLine();
+
+            //while userCommand is not "brew", keep prompting for command
+            while (!userCommand.toLowerCase().equals("brew")) {
+                
+                //if userCommand is "help", display help text
+                if (userCommand.toLowerCase().equals("help")) {
+                    //open file titled instructions.txt and print its contents
+                    try {
+                        java.io.File file = new java.io.File("res/allTextFiles/instructions.txt");
+                        java.util.Scanner helpInput = new java.util.Scanner(file);
+                        while (helpInput.hasNextLine()) {
+                            String line = helpInput.nextLine();
+                            System.out.println(line);
+                        }
+                        helpInput.close();
+                    } catch (java.io.FileNotFoundException e) {
+                        System.out.println("File not found: instructions.txt");
+                    }
+                }
+
+                //if userCommand starts with "make ", add ingredient that follows to potion"
+                else if (userCommand.toLowerCase().startsWith("add ")) {
+                    String ingredient = userCommand.substring(4);
+                    System.out.println("You added " + ingredient + " to the potion.");
+
+                    //add ingredient to potion (not implemented yet)
+                }
+
+                //if userCommand is "ingredients", display list of available ingredients
+                else if (userCommand.toLowerCase().equals("ingredients")) {
+                    //display list of available ingredients (not implemented yet)
+                }
+
+                //if userCommand is an ingredient, display info about that ingredient
+                else if (game.availableIngredients.contains(userCommand.toLowerCase())) {
+                    //display info about ingredient (not implemented yet)
+                }
+
+                else {
+                    System.out.println("Invalid command. Please try again.");
+                }
+
+                System.out.println("\nEnter a command (type 'help' if you're not sure what to do):");
+                userCommand = input.nextLine();
+
+            }
+
+            //show player that potion is brewing
+            //every few seconds, print 3 dots, then erase the line
+            //do that like 4 times
+            System.out.println("\nBrewing the potion...");
+            sleep(200);
+            for (int i = 0; i < 4; i++) {
+                //print '...' slowly
+                for(int d = 0; d < 3; d++){
+                    System.out.print(".");
+                    sleep(200);
+                }
+                System.out.print("\r   \r");
+                System.out.println();
+                sleep(50);
+                
+            }
+            System.out.println("Your potion is finished! Handing to Customer");
+
+            //if customer aversion is in the potion, print their negative reaction
+
+            //if potion matches customers cure, print positive reaction
+            //set customer status to cured
+            //if they have an ingredient to give, add it to the list of availableIngredients
+            //if they have connections to other customers, increment the visited status of 
+            //customers they are connected to
+
+            //if potion does not match customers cure, print neutral reaction
             
             game.availableCustomers.remove(currentCustomer);
 
         }
         
     }
-
-    
-
-    //after initial text, first line of customer dialogue is displayed
-    //player is prompted to enter a command
-    //once player has entered make:...
-    //time.sleep, display "brewing..."
-    //display giving to customer and reaction
-    //display appropriate reaction based on recipe
-    //if cured, update cure status, increment numVisits for customer connections, remove from availableCustomers
-    //if not cured, display appropriate dialogue
-    //if numVisits for customer reaches neededVisits, add to availableCustomers
-
-    //loop through until the size of availableCustomers is 0
-
-
 
 
 }
