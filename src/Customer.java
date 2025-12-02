@@ -18,6 +18,7 @@ public class Customer {
     public int numVisits = 0;
     public int neededVisits;
     public ArrayList<String> dialogue;
+    public HashMap<String, Integer> recipe;
 
     Customer(String fileName){
         this.name = getCustomerName(fileName);
@@ -88,7 +89,7 @@ public class Customer {
 
     //given a text file, find the lines that start with "Cure Recipe:"
     // for each ingredient following "Cure Recipe," add to a hashmap with ingredient name as key and quantity as value
-    public static HashMap<String, Integer> getCureRecipe(String fileName) {
+    public HashMap<String, Integer> getCureRecipe(String fileName) {
         HashMap<String, Integer> recipe = new HashMap<String, Integer>();
 
         try {
@@ -121,6 +122,11 @@ public class Customer {
         } catch (java.io.FileNotFoundException e) {
             System.out.println("File not found: " + fileName);
         }
+        this.recipe = recipe;
+        return recipe;
+    }
+
+    public HashMap<String,Integer> getCureRecipe(){
         return recipe;
     }
     
