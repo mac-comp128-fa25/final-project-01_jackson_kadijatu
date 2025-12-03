@@ -6,7 +6,7 @@ General Notes:
 
 
 Cured:  False
-Cure Recipe:    
+CureRecipe:    
 Connections:    Adrien Dennis
 Ingredient: crowgrass
 Aversions: fireroot

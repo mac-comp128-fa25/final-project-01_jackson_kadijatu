@@ -12,6 +12,7 @@ public class Main {
     public ArrayList<Customer> availableCustomers;
     public ArrayList<String> customerConnections;
     public ArrayList<String> availableIngredients;
+    public Potion currentPotion = new Potion();
 
     //initial setup
     public Main() {
@@ -146,6 +147,7 @@ public class Main {
             //print a randomcustomer from the list, then remove them from the list
             Customer currentCustomer = game.getRandomCustomer();
             ArrayList<String> dialogue = currentCustomer.dialogue;
+            System.out.println(currentCustomer.cureRecipe);
             System.out.println("\n" + currentCustomer.name.toUpperCase() + " enters the shop!\n");
             sleep(50);
 
@@ -178,12 +180,22 @@ public class Main {
                     }
                 }
 
-                //if userCommand starts with "make ", add ingredient that follows to potion"
+                //if userCommand starts with "add ", add ingredient that follows to potion"
                 else if (userCommand.toLowerCase().startsWith("add ")) {
                     String ingredient = userCommand.substring(4);
                     System.out.println("You added " + ingredient + " to the potion.");
 
-                    //add ingredient to potion (not implemented yet)
+                    game.currentPotion.add(ingredient);
+                    
+                }
+
+                //if userCommand is "potion", display current potion ingredients
+                else if (userCommand.toLowerCase().equals("potion")) {
+                    System.out.println("Current potion ingredients:");
+                    for (String ingredient : game.currentPotion.potionIng.keySet()) {
+                        int quantity = game.currentPotion.potionIng.get(ingredient);
+                        System.out.println("- " + ingredient + ": " + quantity);
+                    }
                 }
 
                 //if userCommand is "ingredients", display list of available ingredients
@@ -223,17 +235,31 @@ public class Main {
             }
             System.out.println("Your potion is finished! Handing to Customer");
 
-            //if customer aversion is in the potion, print their negative reaction
+            //if customer aversion is in the potion, print their negative reaction, which is bindex 3 of their dialogue
+            if (game.currentPotion.potionIng.keySet().contains(currentCustomer.aversions)){
+                System.out.println(currentCustomer.dialogue.get(3));
+            }
+            System.out.println("Aversion: " + currentCustomer.aversions);
 
             //if potion matches customers cure, print positive reaction
-            //set customer status to cured
-            //if they have an ingredient to give, add it to the list of availableIngredients
-            //if they have connections to other customers, increment the visited status of 
-            //customers they are connected to
-
-            //if potion does not match customers cure, print neutral reaction
             
+            if (game.currentPotion.compare(currentCustomer)){
+                System.out.println(currentCustomer.dialogue.get(1));
+                currentCustomer.cureStatus = true;
+                //if they have an ingredient to give, add it to the list of availableIngredients
+                //if they have connections to other customers, increment the visited status of customers they are connected to
+
+            }
+            else{
+                System.out.println(currentCustomer.dialogue.get(2));  //if potion does not match customers cure, print neutral reaction
+
+
+            }
+          
             game.availableCustomers.remove(currentCustomer);
+
+            //check if any customers can now be added to availableCustomers
+            
 
         }
         

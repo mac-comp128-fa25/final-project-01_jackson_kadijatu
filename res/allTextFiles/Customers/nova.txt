@@ -4,7 +4,7 @@ General notes:
 
 
 Cured:  False
-Cure Recipe:    sagefern sagefern sagefern
+CureRecipe:    sagefern sagefern sagefern
 Connections:    Ava
 Ingredient:
 numVisits:  0

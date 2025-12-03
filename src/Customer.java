@@ -19,6 +19,7 @@ public class Customer {
     public int neededVisits;
     public ArrayList<String> dialogue;
     public HashMap<String, Integer> recipe;
+    public String aversions;
 
     Customer(String fileName){
         this.name = getCustomerName(fileName);
@@ -27,32 +28,37 @@ public class Customer {
         //this.connections = getConnections(fileName);
         this.dialogue = getDialogue(fileName);
         this.neededVisits = getNumNeededVisits(fileName);
+        this.aversions = getAversions(fileName);
     }
 
     //method for parsing dialogue from text file
+    //adds every line after "Dialogue:" to an arraylist of strings
         
     public static ArrayList<String> getDialogue(String fileName) {
-        
         ArrayList<String> dialogue = new ArrayList<String>();
+
         try {
-            File file = new File("res/allTextFiles/Customers/" + fileName);
-            Scanner input = new Scanner(file);
-            boolean isDialogueLine = false;
+            java.io.File file = new java.io.File("res/allTextFiles/Customers/" + fileName);
+            java.util.Scanner input = new java.util.Scanner(file);
+
+            boolean dialogueSection = false;
+
             while (input.hasNextLine()) {
                 String line = input.nextLine();
-                if (line.equals("Dialogue:")) {
-                    isDialogueLine = true;
-                    continue;
-                }
-                if (isDialogueLine) {
+
+                if (dialogueSection) {
                     dialogue.add(line);
+                }
+
+                if (line.equals("Dialogue:")) {
+                    dialogueSection = true;
                 }
             }
             input.close();
         } catch (java.io.FileNotFoundException e) {
             System.out.println("File not found: " + fileName);
         }
-        
+
         return dialogue;
     }
 
@@ -90,6 +96,7 @@ public class Customer {
     //given a text file, find the lines that start with "Cure Recipe:"
     // for each ingredient following "Cure Recipe," add to a hashmap with ingredient name as key and quantity as value
     public HashMap<String, Integer> getCureRecipe(String fileName) {
+        ArrayList<String> ingredients = new ArrayList<String>();
         HashMap<String, Integer> recipe = new HashMap<String, Integer>();
 
         try {
@@ -99,26 +106,27 @@ public class Customer {
             while (input.hasNextLine()) {
                 String line = input.nextLine();
 
-                if (line.equals("CureRecipe:")) {
-                    //delete "CureRecipe:" from the line
-                // create a list of ingredients by splitting the line at spaces
-                // and use that list to populate the hashmap
-                    String[] ingredients = line.trim().split(" ");
-
-                    for (String ingredient : ingredients) {
-
-                        if (recipe.containsKey(ingredient)) {
-                            recipe.put(ingredient, recipe.get(ingredient) + 1);
-                        } else {
-                            recipe.put(ingredient, 1);
-                        }
-                    }
-                }
-
-                
+                if (line.startsWith("CureRecipe:")) {
+                    String ing = line.substring(11).trim(); //get ingredient after "CureRecipe:"
+                    //split those ingredients by spaces and add to ingredients list
+                    String[] ingArray = ing.split(" ");
+                    for (String ingredient : ingArray) {
+                        ingredients.add(ingredient);
+                    }                 
+                }       
 
             }
-            input.close();
+            input.close();            
+
+            for (String ingredient : ingredients) {
+
+                if (recipe.containsKey(ingredient)) {
+                    recipe.put(ingredient, recipe.get(ingredient) + 1);
+                } else {
+                    recipe.put(ingredient, 1);
+                }
+            }
+
         } catch (java.io.FileNotFoundException e) {
             System.out.println("File not found: " + fileName);
         }
@@ -170,6 +178,7 @@ public class Customer {
 
             while (input.hasNextLine()) {
                 String line = input.nextLine();
+                //System.out.println(line);
 
                 if (line.startsWith("neededVisits:")) {
                     String numNeededVisitsStr = line.substring(13).trim();
@@ -183,6 +192,29 @@ public class Customer {
         }
         
         return 0; // return 0 if numVisits not found
+    }
+
+    //method to get aversion from text file
+    public static String getAversions(String fileName) {
+        try {
+            java.io.File file = new java.io.File("res/allTextFiles/Customers/" + fileName);
+            java.util.Scanner input = new java.util.Scanner(file);
+
+            while (input.hasNextLine()) {
+                String line = input.nextLine();
+
+                if (line.startsWith("Aversions:")) {
+                    String aversions = line.substring(10).trim();
+                    input.close();
+                    return aversions;
+                }
+            }
+            input.close();
+        } catch (java.io.FileNotFoundException e) {
+            System.out.println("File not found: " + fileName);
+        }
+        
+        return null; // return empty string if aversions not found
     }
 
 }

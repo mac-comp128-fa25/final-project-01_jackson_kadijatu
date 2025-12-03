@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 
 public class Potion {
-    HashMap<String,Integer> potionIng = new HashMap<>();
+    public HashMap<String,Integer> potionIng = new HashMap<>();
 
 
     public void add(String Ingredient){

@@ -6,9 +6,10 @@ general notes:
 
 
 Cured:  False
-Cure Recipe:    crowgrass, crowgrass, crowgrass, fireroot, sagefern
+CureRecipe:    crowgrass crowgrass crowgrass fireroot sagefern
 Connections:
 Ingredient: 
+Aversions: amber shard
 numVisits: 0
 neededVisits: 2
 
