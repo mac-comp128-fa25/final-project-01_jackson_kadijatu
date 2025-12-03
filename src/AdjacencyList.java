@@ -56,8 +56,6 @@ private ArrayList<Customer> connections;
        for(Customer c : customers){
         customerConnections.put(c, c.connections);
        }
-
-
     }
 
 
@@ -78,8 +76,15 @@ private ArrayList<Customer> connections;
                     String[] names = line.substring(12).trim().split(" ");
 
                     for (String name : names) {
-                        Customer c = new Customer(name + ".txt");   
-                        connections.add(c);
+
+                        if(Main.allCustomersNames.contains(name)){
+                            connections.add(customer) // some call to add reference to existing customer
+                        }
+                        else{
+                            Customer c = new Customer(name + ".txt");   
+                            connections.add(c);
+                        }
+                        
                     
                     }
             }
