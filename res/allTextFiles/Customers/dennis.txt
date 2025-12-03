@@ -1,12 +1,5 @@
-general notes:
-    only becomes a customer after you cure 2 of adrien, dennis, or holly
-    experiencing mental fog, chills, and some minor body aches. very allergic
-    to Amber
-
-
-
 Cured:  False
-CureRecipe:    crowgrass crowgrass crowgrass fireroot sagefern
+CureRecipe:    crowgrass, crowgrass, crowgrass, fireroot, sagefern
 Connections:
 Ingredient: 
 Aversions: amber shard

@@ -1,10 +1,5 @@
-General notes:
-    ava's twin
-    customer from start
-
-
 Cured:  False
-CureRecipe:    sagefern sagefern sagefern
+CureRecipe:    sagefern, sagefern, sagefern
 Connections:    Ava
 Ingredient:
 numVisits:  0

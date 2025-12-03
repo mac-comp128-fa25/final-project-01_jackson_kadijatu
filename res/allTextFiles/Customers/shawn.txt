@@ -1,7 +1,5 @@
-Customer from start, no connections
-
 Cured:  False
-CureRecipe:    honey honey honey milkbush
+CureRecipe:    honey, honey, honey, milkbush
 Connections:    
 Ingredient:
 numVisits: 0

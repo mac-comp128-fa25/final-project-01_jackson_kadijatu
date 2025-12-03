@@ -1,12 +1,5 @@
-General Notes:
-    Nova's twin
-    allergic to fireroot
-    only becomes a customer if you cure Nova
-    works at a rare flower shop, gives you crowgrass after being cured
-
-
 Cured:  False
-CureRecipe:    
+CureRecipe:    honey, honey, amber shard, amber shard, amber shard
 Connections:    Adrien Dennis
 Ingredient: crowgrass
 Aversions: fireroot
