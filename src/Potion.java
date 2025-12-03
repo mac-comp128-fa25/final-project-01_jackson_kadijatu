@@ -21,7 +21,7 @@ public class Potion {
     }
 
     public boolean compare(Customer customer){
-        if(customer.getCureRecipe().equals(potionIng)){
+        if(customer.cureRecipe.equals(potionIng)){
             return true;
         }
         else{

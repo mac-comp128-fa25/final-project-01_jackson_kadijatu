@@ -24,6 +24,7 @@ private ArrayList<Customer> connections;
         ArrayList<Customer> temp = new ArrayList<>();
         temp.add(connection);
         customerConnections.put(customer, temp);
+        
     }
 
 

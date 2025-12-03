@@ -8,7 +8,8 @@ import java.io.File;
  */
 
 public class Main {
-    public ArrayList<Customer> allCustomers;
+    public static ArrayList<String> allCustomerNames;
+    public static ArrayList<Customer> allCustomers;
     public ArrayList<Customer> availableCustomers;
     public ArrayList<String> customerConnections;
     public ArrayList<String> availableIngredients;
@@ -29,6 +30,10 @@ public class Main {
 
         }
         
+        for (Customer customer : allCustomers){
+            String name = customer.name;
+            allCustomerNames.add(name);
+        }
         
 
 

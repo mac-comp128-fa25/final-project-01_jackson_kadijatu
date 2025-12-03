@@ -18,7 +18,6 @@ public class Customer {
     public int numVisits = 0;
     public int neededVisits;
     public ArrayList<String> dialogue;
-    public HashMap<String, Integer> recipe;
     public String aversions;
 
     Customer(String fileName){
@@ -109,7 +108,7 @@ public class Customer {
                 if (line.startsWith("CureRecipe:")) {
                     String ing = line.substring(11).trim(); //get ingredient after "CureRecipe:"
                     //split those ingredients by spaces and add to ingredients list
-                    String[] ingArray = ing.split(" ");
+                    String[] ingArray = ing.split(", ");
                     for (String ingredient : ingArray) {
                         ingredients.add(ingredient);
                     }                 
@@ -130,19 +129,10 @@ public class Customer {
         } catch (java.io.FileNotFoundException e) {
             System.out.println("File not found: " + fileName);
         }
-        this.recipe = recipe;
-        return recipe;
-    }
-
-    public HashMap<String,Integer> getCureRecipe(){
+        
         return recipe;
     }
     
-
-    //given a text file, find the line that starts with "Connections:"
-    // create an arrayList of customer names that are listed after "Connections:"
-    
-
 
     //given a text file, find the line that starts with "Ingredient:"
     // return the ingredient name
@@ -157,6 +147,11 @@ public class Customer {
                 if (line.startsWith("Ingredient:")) {
                     String ingredient = line.substring(11).trim();
                     input.close();
+
+                    // if ingredient is "none", return null
+                    if (ingredient.equalsIgnoreCase("")) {
+                        return null;
+                    }
                     return ingredient;
                 }
             }
@@ -165,7 +160,7 @@ public class Customer {
             System.out.println("File not found: " + fileName);
         }
         
-        return ""; // return empty string if ingredient not found
+        return null; // return empty string if ingredient not found
     }
 
 
