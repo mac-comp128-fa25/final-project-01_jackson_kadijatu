@@ -59,48 +59,6 @@
 //        }
 //     }
 
-
-
-
-
-//     public ArrayList<Customer> getConnections(String fileName) {
-//         ArrayList<Customer> connections = new ArrayList<Customer>();
-
-//         try {
-//             java.io.File file = new java.io.File("res/allTextFiles/Customers/" + fileName);
-//             java.util.Scanner input = new java.util.Scanner(file);
-
-//             while (input.hasNextLine()) {
-//                 String line = input.nextLine();
-
-//                 if (line.startsWith("Connections:")) {
-//                     String[] names = line.substring(12).trim().split(" ");
-
-//                     for (String name : names) {
-
-//                         if(Main.allCustomersNames.contains(name)){
-//                             connections.add(customer) // some call to add reference to existing customer
-//                         }
-//                         else{
-//                             Customer c = new Customer(name + ".txt");   
-//                             connections.add(c);
-//                         }
-                        
-                    
-//                     }
-//             }
-//         }
-//         input.close();
-
-//         } catch (java.io.FileNotFoundException e) {
-//             System.out.println("File not found: " + fileName);
-//         }
-//         this.connections = connections;
-//         return connections;
-//     }
-
-
-
 //     public ArrayList<Customer> getConnections(){
 //         return connections;
 //     }
