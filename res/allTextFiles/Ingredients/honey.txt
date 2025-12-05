@@ -1,0 +1,6 @@
+name: Honey
+attributes: Relieves Cough, Sore Throat
+available: Y
+
+honey
+    -good for cough, sore throat.

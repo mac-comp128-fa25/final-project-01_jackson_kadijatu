@@ -8,15 +8,16 @@ import java.io.File;
  */
 
 public class Main {
-    public static ArrayList<String> allCustomerNames;
     public static ArrayList<Customer> allCustomers;
     public ArrayList<Customer> availableCustomers;
+    public static ArrayList<String> allCustomerNames;
     public ArrayList<String> customerConnections;
     public ArrayList<String> availableIngredients;
     public Potion currentPotion = new Potion();
 
     //initial setup
     public Main() {
+        allCustomerNames = new ArrayList<>();
         allCustomers = populateAllCustomers("res/allTextFiles/Customers");
         availableCustomers = new ArrayList<Customer>();
         populateAvailableCustomers();
@@ -24,7 +25,7 @@ public class Main {
         //populate availableIngredients from Ingredients class with ingredients available at the start of the game (everything except crowgroass)
         Ingredients ingredients = new Ingredients("ingredients.txt");
         for (String ingredientName : ingredients.getNames()){
-            if (!ingredientName.toLowerCase().equals("crowgroass")){
+            if (!ingredientName.toLowerCase().equals("crowgrass")){
                 availableIngredients.add(ingredientName.toLowerCase());
             }
 
@@ -32,6 +33,7 @@ public class Main {
         
         for (Customer customer : allCustomers){
             String name = customer.name;
+            System.out.println(name);
             allCustomerNames.add(name);
         }
         

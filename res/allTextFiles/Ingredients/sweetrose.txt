@@ -1,0 +1,6 @@
+name: Sweetrose
+attributes: Relieves Cough, Sore Throat
+available: 
+
+sweetrose
+    -good for coughs.

@@ -1,0 +1,6 @@
+name: Frostsilk
+attributes: Relieves Overheating
+available: Y
+
+frostsilk
+    -good for cooling the body down.

@@ -1,0 +1,6 @@
+name: Milkbush
+attributes: Relieves Insomnia/Difficulty Sleeping
+available: Y
+
+milkbush
+    -sleep aid.

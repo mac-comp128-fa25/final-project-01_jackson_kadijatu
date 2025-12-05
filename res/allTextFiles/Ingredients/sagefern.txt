@@ -1,0 +1,6 @@
+name: Sagefern
+attributes: Relieves Pain
+available: Y
+
+sagefern
+    -pain reliever.
