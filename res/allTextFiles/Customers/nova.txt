@@ -1,7 +1,7 @@
-Cured:  False
-CureRecipe:    sagefern, sagefern, sagefern
-Connections:    Ava
-Ingredient:
+Cured: False
+CureRecipe: sagefern, sagefern, sagefern
+Connections: ava
+Ingredient: none
 numVisits:  0
 neededVisits:   0
 

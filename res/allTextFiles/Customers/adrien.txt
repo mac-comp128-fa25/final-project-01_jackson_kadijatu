@@ -1,9 +1,9 @@
-Cured:  False
-CureRecipe:    nightwood, nightwood, frostsilk, frostsilk
-Connections:    dennis
-Ingredient: 
-numVisits:  0
-neededVisits:  1
+Cured: False
+CureRecipe: nightwood, nightwood, frostsilk, frostsilk
+Connections: dennis
+Ingredient: none
+numVisits: 0
+neededVisits: 1
 
 Dialogue:
 *Yawn* You're the newest apothecary, right? Sweet. I'm Adrien. A- *yawn* Ava told me you were able to cure her, so I figured you could help me too. I've been having some trouble sleeping lately cause I run kinda hot. Haven't had a good nights rest in a while. I used to try drinking a warm cup of milk since people say it helps, but I got tired of the taste REAL quick. Think you can come up with something better?

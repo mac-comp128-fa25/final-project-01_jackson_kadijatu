@@ -1,7 +1,7 @@
-Cured:  False
-CureRecipe:    harrow seed, frostsilk
-Connections:    Dennis
-Ingredient:
+Cured: False
+CureRecipe: harrow seed, frostsilk
+Connections: dennis
+Ingredient: none
 numVisits: 0
 neededVisits: 0
 

@@ -29,4 +29,8 @@ public class Potion {
         }
     }
     
+    //clear the current potion
+    public void clear(){
+        potionIng.clear();
+    }
 }

@@ -18,7 +18,7 @@ public class Ingredient {
         String name = "";
 
         try {
-            java.io.File file = new java.io.File("res/allTextFiles/" + filename);
+            java.io.File file = new java.io.File("res/allTextFiles/Ingredients/" + filename);
             java.util.Scanner input = new java.util.Scanner(file);
 
             while (input.hasNextLine()) {
@@ -42,13 +42,13 @@ public class Ingredient {
         String attributes = "";
 
         try {
-            java.io.File file = new java.io.File("res/allTextFiles/" + filename);
+            java.io.File file = new java.io.File("res/allTextFiles/Ingredients/" + filename);
             java.util.Scanner input = new java.util.Scanner(file);
 
             while (input.hasNextLine()) {
                 String line = input.nextLine();
-                if (line.startsWith("attribute:")) {
-                    attributes += line.substring(10).trim();
+                if (line.startsWith("attributes:")) {
+                    attributes += line.substring(11).trim();
                 }
             }
             input.close();
@@ -65,7 +65,7 @@ public class Ingredient {
         boolean available = false;
 
         try {
-            java.io.File file = new java.io.File("res/allTextFiles/" + filename);
+            java.io.File file = new java.io.File("res/allTextFiles/Ingredients/" + filename);
             java.util.Scanner input = new java.util.Scanner(file);
 
             while (input.hasNextLine()) {
@@ -84,4 +84,6 @@ public class Ingredient {
 
         return available;
     }
+
+    
 }

@@ -1,6 +1,6 @@
-Cured:  False
-CureRecipe:    honey, honey, amber shard, amber shard, amber shard
-Connections:    Adrien Dennis
+Cured: False
+CureRecipe: honey, honey, amber shard, amber shard, amber shard
+Connections: adrien dennis
 Ingredient: crowgrass
 Aversions: fireroot
 numVisits: 0
