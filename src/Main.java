@@ -14,6 +14,7 @@ public class Main {
     public ArrayList<Ingredient> allIngredients;;
     public ArrayList<String> availableIngredients;
     public Potion currentPotion;
+    public int PlayerScore;
 
     //initial setup
     public Main() {
@@ -203,6 +204,22 @@ public class Main {
                     
                 }
 
+                //remove ingredient from potion if userCommand starts with "remove "
+                else if (userCommand.toLowerCase().startsWith("remove ")) {
+                    String ingredient = userCommand.substring(7);
+                    if (game.currentPotion.potionIng.keySet().contains(ingredient)) {
+                        int currentQuantity = game.currentPotion.potionIng.get(ingredient);
+                        if (currentQuantity > 1) {
+                            game.currentPotion.potionIng.put(ingredient, currentQuantity - 1);
+                        } else {
+                            game.currentPotion.potionIng.remove(ingredient);
+                        }
+                        System.out.println("You removed one " + ingredient + " from the potion.");
+                    } else {
+                        System.out.println("Ingredient not found in the potion.");
+                    }
+                }
+
                 //if userCommand is "potion", display current potion ingredients
                 else if (userCommand.toLowerCase().equals("potion")) {
                     System.out.println("Current potion ingredients:");
@@ -259,14 +276,15 @@ public class Main {
             //if customer aversion is in the potion, print their negative reaction, which is bindex 3 of their dialogue
             if (game.currentPotion.potionIng.keySet().contains(currentCustomer.aversions)){
                 System.out.println(currentCustomer.dialogue.get(3));
+                game.PlayerScore -= 3;
             }
-            System.out.println("Aversion: " + currentCustomer.aversions);
 
             
             //if potion matches customers cure, print positive reaction
             if (game.currentPotion.compare(currentCustomer)){
                 System.out.println(currentCustomer.dialogue.get(1));
                 currentCustomer.cureStatus = true;
+                game.PlayerScore += 5;
 
                 //if they have an ingredient to give, add it to the list of availableIngredients
                 if (currentCustomer.ingredient != null){
