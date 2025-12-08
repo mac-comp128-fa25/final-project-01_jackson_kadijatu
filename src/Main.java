@@ -281,7 +281,7 @@ public class Main {
 
             
             //if potion matches customers cure, print positive reaction
-            if (game.currentPotion.compare(currentCustomer)){
+            else if (game.currentPotion.compare(currentCustomer)){
                 System.out.println(currentCustomer.dialogue.get(1));
                 currentCustomer.cureStatus = true;
                 game.PlayerScore += 5;
@@ -302,6 +302,7 @@ public class Main {
                 }
 
             }
+            
             else{
                 System.out.println(currentCustomer.dialogue.get(2));  //if potion does not match customers cure, print neutral reaction
 
