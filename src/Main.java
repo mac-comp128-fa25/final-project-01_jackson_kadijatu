@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.lang.Thread;
-import java.lang.reflect.Array;
 import java.io.File;
 
 /**
@@ -8,41 +7,43 @@ import java.io.File;
  */
 
 public class Main {
-    public static ArrayList<String> allCustomerNames;
     public static ArrayList<Customer> allCustomers;
     public ArrayList<Customer> availableCustomers;
+    public static ArrayList<String> allCustomerNames;
     public ArrayList<String> customerConnections;
+    public ArrayList<Ingredient> allIngredients;;
     public ArrayList<String> availableIngredients;
-    public Potion currentPotion = new Potion();
+    public Potion currentPotion;
+    public int PlayerScore;
 
     //initial setup
     public Main() {
-        allCustomers = populateAllCustomers("res/allTextFiles/Customers");
+        allCustomerNames = new ArrayList<>();
+        allCustomers = new ArrayList<>();
         availableCustomers = new ArrayList<Customer>();
-        populateAvailableCustomers();
+        allIngredients = new ArrayList<Ingredient>();
         availableIngredients = new ArrayList<String>();
+        currentPotion = new Potion();
         //populate availableIngredients from Ingredients class with ingredients available at the start of the game (everything except crowgroass)
-        Ingredients ingredients = new Ingredients("ingredients.txt");
-        for (String ingredientName : ingredients.getNames()){
-            if (!ingredientName.toLowerCase().equals("crowgroass")){
-                availableIngredients.add(ingredientName.toLowerCase());
-            }
+        
+        populateAllCustomers("res/allTextFiles/Customers");
+        populateAvailableCustomers();
+        populateAllIngredients();
+        populateAvailableIngredients();
 
-        }
         
         for (Customer customer : allCustomers){
+            customer.connections = customer.getConnections(customer.name + ".txt");
             String name = customer.name;
             allCustomerNames.add(name);
         }
-        
-
 
     }
 
     //given the folder that the customer text files are in
     //populate and return an arrayList of all customer objects
-    public static ArrayList<Customer> populateAllCustomers(String folderName) {
-        ArrayList<Customer> customers = new ArrayList<Customer>();
+    public static void populateAllCustomers(String folderName) {
+        // ArrayList<Customer> customers = new ArrayList<Customer>();
 
         File customersFolder = new File(folderName);
         File[] listOfCustomers = customersFolder.listFiles();
@@ -51,14 +52,13 @@ public class Main {
             if (file.isFile()) {
                 String fileName = file.getName();
                 Customer customer = new Customer(fileName);
-                customers.add(customer);
+                allCustomers.add(customer);
             }
         }
 
-        return customers;
+        //return customers;
     }
-
-    
+  
 
     // If customer cureStatus is false, and numVisits >= neededVisits, 
     // add to availableCustomers
@@ -67,6 +67,29 @@ public class Main {
 
             if (!c.cureStatus && c.numVisits >= c.neededVisits){
                 availableCustomers.add(c);
+            }
+        }
+    }
+
+    //for each ingredient in ingredients folder, use the text file to create an ingredient object and add it to allIngredients
+    public void populateAllIngredients() {
+        //for each file in res/allTextFiles/Ingredients
+        File ingredientsFolder = new File("res/allTextFiles/Ingredients");
+        File[] listOfIngredients = ingredientsFolder.listFiles();
+        for (File file : listOfIngredients) {
+            if (file.isFile()) {
+                String fileName = file.getName();
+                Ingredient ingredient = new Ingredient(fileName);
+                allIngredients.add(ingredient);
+            }
+        }
+    }
+
+    //populate availableIngredients with ingredients that are marked as available in allIngredients
+    public void populateAvailableIngredients() {
+        for (Ingredient ingredient : allIngredients) {
+            if (ingredient.available) {
+                availableIngredients.add(ingredient.name.toLowerCase());
             }
         }
     }
@@ -126,7 +149,7 @@ public class Main {
     public static void main(String[] args) {
        
         Main game = new Main();
-        //runIntro();
+        // runIntro();
         
         //user input to proceed to
         java.util.Scanner input = new java.util.Scanner(System.in);
@@ -134,19 +157,6 @@ public class Main {
             input.nextLine();
         
         System.out.println("Here Comes Your First Customer! Good Luck!");
-
-        //for customer in availableCustomers, choose random customer
-        //display customer dialogue
-        //give user options for input
-        //process user input
-        //update potion based on user input or display appropriate information
-        //once user inputs "brew", compare potion to cure recipe
-        //display appropriate reaction based on comparison
-        //update customer cure status and available customers based on reaction
-        //repeat until available customers is empty
-
-        
-        
 
         while (game.availableCustomers.size() > 0){
             //print a randomcustomer from the list, then remove them from the list
@@ -194,6 +204,22 @@ public class Main {
                     
                 }
 
+                //remove ingredient from potion if userCommand starts with "remove "
+                else if (userCommand.toLowerCase().startsWith("remove ")) {
+                    String ingredient = userCommand.substring(7);
+                    if (game.currentPotion.potionIng.keySet().contains(ingredient)) {
+                        int currentQuantity = game.currentPotion.potionIng.get(ingredient);
+                        if (currentQuantity > 1) {
+                            game.currentPotion.potionIng.put(ingredient, currentQuantity - 1);
+                        } else {
+                            game.currentPotion.potionIng.remove(ingredient);
+                        }
+                        System.out.println("You removed one " + ingredient + " from the potion.");
+                    } else {
+                        System.out.println("Ingredient not found in the potion.");
+                    }
+                }
+
                 //if userCommand is "potion", display current potion ingredients
                 else if (userCommand.toLowerCase().equals("potion")) {
                     System.out.println("Current potion ingredients:");
@@ -205,12 +231,19 @@ public class Main {
 
                 //if userCommand is "ingredients", display list of available ingredients
                 else if (userCommand.toLowerCase().equals("ingredients")) {
-                    //display list of available ingredients (not implemented yet)
+                    System.out.println("Available ingredients:");
+                    for (String ingredient : game.availableIngredients) {
+                        System.out.println("- " + ingredient);
+                    }
                 }
 
                 //if userCommand is an ingredient, display info about that ingredient
                 else if (game.availableIngredients.contains(userCommand.toLowerCase())) {
-                    //display info about ingredient (not implemented yet)
+                    for (Ingredient ingredient : game.allIngredients) {
+                        if (ingredient.name.equalsIgnoreCase(userCommand)) {
+                            System.out.println("Attributes: " + ingredient.attributes);
+                        }
+                    }
                 }
 
                 else {
@@ -243,32 +276,48 @@ public class Main {
             //if customer aversion is in the potion, print their negative reaction, which is bindex 3 of their dialogue
             if (game.currentPotion.potionIng.keySet().contains(currentCustomer.aversions)){
                 System.out.println(currentCustomer.dialogue.get(3));
+                game.PlayerScore -= 3;
             }
-            System.out.println("Aversion: " + currentCustomer.aversions);
 
-            //if potion matches customers cure, print positive reaction
             
+            //if potion matches customers cure, print positive reaction
             if (game.currentPotion.compare(currentCustomer)){
                 System.out.println(currentCustomer.dialogue.get(1));
                 currentCustomer.cureStatus = true;
+                game.PlayerScore += 5;
+
                 //if they have an ingredient to give, add it to the list of availableIngredients
+                if (currentCustomer.ingredient != null){
+                    System.out.println(currentCustomer.name + " has given you " + currentCustomer.ingredient.name + " as a reward!");
+                    game.availableIngredients.add(currentCustomer.ingredient.name.toLowerCase());
+
+                }
+
                 //if they have connections to other customers, increment the visited status of customers they are connected to
+                if (currentCustomer.connections != null){
+                    for (Customer connection : currentCustomer.connections){
+                        connection.numVisits += 1;
+                    }
+
+                }
 
             }
             else{
                 System.out.println(currentCustomer.dialogue.get(2));  //if potion does not match customers cure, print neutral reaction
 
-
             }
           
             game.availableCustomers.remove(currentCustomer);
 
-            //check if any customers can now be added to availableCustomers
+            //check if any customers can now be added to availableCustomers, and remove all ingredients from currentPotion
+            game.currentPotion.clear();
+            game.populateAvailableCustomers();
             
 
         }
-        
-    }
+
+    
 
 
-}
+}}
+

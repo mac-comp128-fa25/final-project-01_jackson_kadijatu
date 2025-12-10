@@ -1,0 +1,6 @@
+name: Amber Shard
+attributes: Relieves Chills
+available: Y
+
+amber shard
+    -good for chills.

@@ -1,7 +1,7 @@
 Cured:  False
 CureRecipe:    crowgrass, crowgrass, crowgrass, fireroot, sagefern
-Connections:
-Ingredient: 
+Connections: none
+Ingredient: none
 Aversions: amber shard
 numVisits: 0
 neededVisits: 2

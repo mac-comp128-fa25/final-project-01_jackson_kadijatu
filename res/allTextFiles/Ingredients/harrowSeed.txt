@@ -1,0 +1,6 @@
+name: Harrow Seed
+attributes: Relieves Tooth Pain
+available: Y
+
+harrow seed
+    -good for toothaches.

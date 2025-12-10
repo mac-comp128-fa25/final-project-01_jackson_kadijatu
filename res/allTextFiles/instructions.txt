@@ -1,5 +1,7 @@
 To see ingredients, type "INGREDIENTS"
 To see ingredient attributes, type name of ingredient (i.e. "HONEY")
 To add ingredients to your potion, type "ADD" followed by the name of the ingredient (i.e. "ADD HONEY")
+To remove an ingredient from your potion, type "REMOVE" followed by the name of the ingredient (i.e "REMOVE HONEY")
 To see what your potion currently looks like, type "POTION"
 When you are finished with your potion, type "BREW" to finish
+HELPFUL HINT: It can be difficult to know how much of each ingredient to put inside of your potion. Here's a tip to make it easier: however much of an ingredient a customer needs is based on how severely they describe their symptoms. If they describe it as "a little", "mild" or something similar, they only need one of the ingredient. If they use adjectives like "somewhat", or don't really go into how much it bothers them, two is usually enough. For symptoms that are really bothering them, three is best!

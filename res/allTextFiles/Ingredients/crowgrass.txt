@@ -1,0 +1,7 @@
+name: Crowgrass
+attributes: Relieves Mental Fog
+available: N
+
+crowgrass
+    -good for mental fog
+    -only available after curing ava.

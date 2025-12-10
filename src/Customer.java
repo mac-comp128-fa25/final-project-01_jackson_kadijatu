@@ -19,15 +19,18 @@ public class Customer {
     public int neededVisits;
     public ArrayList<String> dialogue;
     public String aversions;
+    public Ingredient ingredient; // ingredient to give as reward upon cure
+
 
     Customer(String fileName){
         this.name = getCustomerName(fileName);
         this.cureStatus = getCureStatus(fileName);
         this.cureRecipe = getCureRecipe(fileName);  
-        this.connections = getConnections(fileName);
+        this.connections = new ArrayList<Customer>();
         this.dialogue = getDialogue(fileName);
         this.neededVisits = getNumNeededVisits(fileName);
         this.aversions = getAversions(fileName);
+        this.ingredient = getIngredient(fileName);
     }
 
     //method for parsing dialogue from text file
@@ -136,7 +139,7 @@ public class Customer {
 
     //given a text file, find the line that starts with "Ingredient:"
     // return the ingredient name
-    public static String getIngredient(String fileName) {
+    public static Ingredient getIngredient(String fileName) {
         try {
             java.io.File file = new java.io.File("res/allTextFiles/Customers/" + fileName);
             java.util.Scanner input = new java.util.Scanner(file);
@@ -149,10 +152,14 @@ public class Customer {
                     input.close();
 
                     // if ingredient is "none", return null
-                    if (ingredient.equalsIgnoreCase("")) {
+                    if (ingredient.equalsIgnoreCase("none")) {
                         return null;
                     }
-                    return ingredient;
+
+                    //otherwise, create and return Ingredient object
+                    Ingredient ingredientObj = new Ingredient(ingredient + ".txt");
+
+                    return ingredientObj;
                 }
             }
             input.close();
@@ -215,9 +222,13 @@ public class Customer {
 
 
 
-
+    // given a text file, find the line that starts with "Connections:"
+    // for each name following "Connections:", add to an arraylist of strings
+    // if there are no connections, return null
     public ArrayList<Customer> getConnections(String fileName) {
         ArrayList<Customer> connections = new ArrayList<Customer>();
+        ArrayList<String> tempArray = new ArrayList<>();
+        // Arralist<String>
 
         try {
             java.io.File file = new java.io.File("res/allTextFiles/Customers/" + fileName);
@@ -227,39 +238,36 @@ public class Customer {
                 String line = input.nextLine();
 
                 if (line.startsWith("Connections:")) {
-                    String[] names = line.substring(12).trim().split(" ");
+                    String connection = line.substring(12).trim(); //get names after "Connections:"
 
-                    for (String name : names) {
-
-                        if(Main.allCustomerNames.contains(name)){
-                            
-                            for(int i = 0; i<Main.allCustomers.size(); i++){{
-                                if(name.equals(Main.allCustomers.get(i).getName())){
-                                   connections.add(Main.allCustomers.get(i)); 
-                                }
-                            }
-                                
-                            }
-                            
-                        }
-                        else{
-                            Customer c = new Customer(name + ".txt");   
-                            connections.add(c);
-                        }
-                        
-                    
+                    if (connection.equalsIgnoreCase("none")) {
+                        input.close();
+                        return null; //return null if there are no connections
                     }
+                    //split those names by spaces and add to connections list
+                    String[] connectionArray = connection.split(" ");
+                    for (String name : connectionArray){
+                        tempArray.add(name);
+                    }
+
+                    for (String name : tempArray){
+                        for (Customer customer : Main.allCustomers){
+                            if (customer.name.equalsIgnoreCase(name)){
+                                connections.add(customer);
+                            }
+                        }
+
+                    }      
+                }       
+
             }
-        }
-        input.close();
+            input.close();            
 
         } catch (java.io.FileNotFoundException e) {
             System.out.println("File not found: " + fileName);
         }
+        
         return connections;
     }
 
-    public String getName(){
-        return name;
-    }
 }

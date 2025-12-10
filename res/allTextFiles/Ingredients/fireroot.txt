@@ -1,0 +1,6 @@
+name: Fireroot
+attributes: Relieves Chills
+available: Y
+
+fireroot
+    -good for chills.

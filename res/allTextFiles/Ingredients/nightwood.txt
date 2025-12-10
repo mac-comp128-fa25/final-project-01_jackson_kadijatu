@@ -1,0 +1,6 @@
+name: Nightwood
+attributes: Relieves Insomnia/Difficulty Sleeping
+available: Y
+
+nightwood
+    -sleep aid.
