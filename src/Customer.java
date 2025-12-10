@@ -232,7 +232,6 @@ public class Customer {
                     for (String name : names) {
 
                         if(Main.allCustomerNames.contains(name)){
-
                             
                             for(int i = 0; i<Main.allCustomers.size(); i++){{
                                 if(name.equals(Main.allCustomers.get(i).getName())){
